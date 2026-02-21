@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Life Leveling System</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">REAL LIFE RPG</p>
+          <h1>Life Leveling System</h1>
+        </div>
+        <div class="meta-panel" id="profilePanel"></div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel" aria-labelledby="statsTitle">
+          <h2 id="statsTitle">Character Stats</h2>
+          <div id="statsGrid" class="stats-grid"></div>
+        </section>
+
+        <section class="panel" aria-labelledby="questsTitle">
+          <div class="section-head">
+            <h2 id="questsTitle">Daily Quests</h2>
+            <button id="resetDayBtn" class="ghost-btn">Reset Daily Status</button>
+          </div>
+          <div id="questList" class="quest-list"></div>
+        </section>
+
+        <section class="panel" aria-labelledby="creatorTitle">
+          <h2 id="creatorTitle">Create Custom Quest</h2>
+          <form id="questForm" class="quest-form">
+            <label>
+              Quest name
+              <input type="text" name="title" required maxlength="80" placeholder="Example: 30-minute deep work block" />
+            </label>
+
+            <label>
+              Stat focus
+              <select name="category" required>
+                <option value="health">Health</option>
+                <option value="discipline">Discipline</option>
+                <option value="money">Money Management</option>
+                <option value="productivity">Productivity</option>
+              </select>
+            </label>
+
+            <label>
+              Difficulty
+              <select name="difficulty" required>
+                <option value="easy">Easy (+10 EXP)</option>
+                <option value="medium" selected>Medium (+20 EXP)</option>
+                <option value="hard">Hard (+35 EXP)</option>
+              </select>
+            </label>
+
+            <button type="submit" class="primary-btn">Add Quest</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <template id="statCardTemplate">
+      <article class="stat-card">
+        <header>
+          <h3 data-name></h3>
+          <span data-level></span>
+        </header>
+        <div class="bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+          <div class="bar-fill" data-fill></div>
+        </div>
+        <p class="stat-caption" data-caption></p>
+      </article>
+    </template>
+
+    <template id="questItemTemplate">
+      <article class="quest-item">
+        <div>
+          <h3 data-title></h3>
+          <p data-meta></p>
+        </div>
+        <button data-action class="primary-btn">Complete</button>
+      </article>
+    </template>
+
+    <script type="module" src="src/js/app.js"></script>
+  </body>
+</html>
